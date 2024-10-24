@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hello michael</title>
+    <style>
+        .georama-hello {
+            font-family: "Georama", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 24px;
+        }
+        body {
+            background-color: #000000;
+            height: 200vh; /* Makes the page scrollable */
+        }
+        .gif-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-left: -10px;
+            margin-bottom: 40%;
+            margin-top: -3%;
+        }
+        canvas {
+            background-color: white;
+            width: 50%;
+            margin-left: 25%;
+            height: 200%;
+        }
+        video {
+            position: absolute;
+            left: 25%;
+            width: 50%;
+            height: auto;
+            transition: transform 0.1s; /* Smooth movement */
+            pointer-events: none; /* Prevents video from capturing mouse events */
+        }
+        #dynamic-image {
+            position: absolute;
+            left: 75%; /* Adjust position to the right of the video */
+            width: 25%; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <p class="georama-hello" style="font-size:32px;">Truly Brick</p>
+    <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
+
+    <div class="gif-container">
+        <canvas>
+
+</canvas>
+        <video id="rotating-video" muted loop>
+            <source src="R.mp4" type="video/mp4"> <!-- Replace with your video source -->
+            Your browser does not support the video tag.
+
+        </video>
+        <img id="dynamic-image" src="frame.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+    </div>
+
+    <script>
+        const video = document.getElementById('rotating-video');
+        const dynamicImage = document.getElementById('dynamic-image');
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+
+            // Move the video based on scroll
+            video.style.transform = `translateY(${scrollY}px)`;
+            dynamicImage.style.transform = `translateY(${scrollY}px)`;
+
+            if (scrollY >= 300) {
+                // Calculate playback position based on scroll
+                const scrollHeight = document.body.scrollHeight - window.innerHeight;
+                const playbackTime = (((scrollY - 300) / 2) / scrollHeight) * video.duration;
+
+                // Set video currentTime based on scroll position
+                video.currentTime = playbackTime;
+            }
+
+            // Show or hide the image based on scroll position
+            if (scrollY > 310 && scrollY < 560) {
+                console.log("Display")
+                dynamicImage.style.display = 'inline';
+            } else {
+                dynamicImage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
