@@ -15,7 +15,7 @@
         }
         body {
             background-color: #000000;
-            height: 16580px; /* Makes the page scrollable */
+            height: 19220px; /* Makes the page scrollable */
         }
         .gif-container {
             position: relative;
@@ -103,7 +103,7 @@
 
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
-                const scrollHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollHeight = 17920 - window.innerHeight;
                 const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
 
                 // Set video currentTime based on scroll position
@@ -112,9 +112,10 @@
 
             // Update visibility for each image with scroll-based fade effect
             updateImageVisibility(materialImage, scrollY, 1240, 3840);
-            updateImageVisibility(heightImage, scrollY, 6000, 7640);
-            updateImageVisibility(thicknessImage, scrollY, 10080, 11440);
-            updateImageVisibility(diameterImage, scrollY, 14160, 15280);
+            updateImageVisibility(heightImage, scrollY, 6000, 8600);
+            updateImageVisibility(thicknessImage, scrollY, 10760, 13360);
+            updateImageVisibility(diameterImage, scrollY, 15320, 17920);
+
 
 
         });
