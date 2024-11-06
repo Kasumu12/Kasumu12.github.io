@@ -75,6 +75,18 @@
         const thicknessImage = document.getElementById('thickness');
         const diameterImage = document.getElementById('diameter');
     
+        function updateImageVisibility(image, scrollY, topPosition) {
+            if (scrollY > 310 && scrollY < 860) {
+                image.style.display = 'inline';
+                image.style.position = 'fixed';
+                image.style.top = topPosition;
+                image.style.left = '25%'; // Adjust to control horizontal position
+            } else {
+                image.style.display = 'none';
+                image.style.position = 'absolute';
+            }
+        }
+    
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
     
@@ -90,17 +102,13 @@
                 video.currentTime = playbackTime;
             }
     
-            // Show or hide the image based on scroll position
-            if (scrollY > 310 && scrollY < 560) {
-                materialImage.style.display = 'inline';
-                materialImage.style.position = 'fixed'; // Keep it fixed on the screen
-                materialImage.style.top = '20%'; // Adjust to position it in view
-                materialImage.style.left = '25%'; // Adjust left position if needed
-            } else {
-                materialImage.style.display = 'none';
-                materialImage.style.position = 'absolute'; // Reset to default
-            }
+            // Update visibility for each image with doubled range
+            updateImageVisibility(materialImage, scrollY, '20%');
+            updateImageVisibility(heightImage, scrollY, '40%');
+            updateImageVisibility(thicknessImage, scrollY, '60%');
+            updateImageVisibility(diameterImage, scrollY, '80%');
         });
     </script>
+
 </body>
 </html>
