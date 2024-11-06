@@ -73,7 +73,7 @@
 
             // Move the video based on scroll
             video.style.transform = `translateY(${scrollY}px)`;
-            dynamicImage.style.transform = `translateY(${scrollY}px)`;
+            materialImage.style.transform = `translateY(${scrollY}px)`;
 
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
@@ -87,9 +87,9 @@
             // Show or hide the image based on scroll position
             if (scrollY > 310 && scrollY < 560) {
                 console.log("Display")
-                dynamicImage.style.display = 'inline';
+                materialImage.style.display = 'inline';
             } else {
-                dynamicImage.style.display = 'none';
+                materialImage.style.display = 'none';
             }
         });
     </script>
