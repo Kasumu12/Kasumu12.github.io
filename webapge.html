@@ -59,14 +59,22 @@
         <video id="rotating-video" muted loop>
             <source src="R.mp4" type="video/mp4"> <!-- Replace with your video source -->
             Your browser does not support the video tag.
-
         </video>
+        
         <img id="material" src="Material.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+        <img id="height" src="Stud Height.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+        <img id="thickness" src="Wall thicness.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+ 
     </div>
 
     <script>
         const video = document.getElementById('rotating-video');
+        
         const materialImage = document.getElementById('material');
+        const heightImage = document.getElementById('height');
+        const thicknessImage = document.getElementById('thickness');
+        const diameterImage = document.getElementById('diameter');
 
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
