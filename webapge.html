@@ -15,7 +15,7 @@
         }
         body {
             background-color: #000000;
-            height: 200vh; /* Makes the page scrollable */
+            height: 500vh; /* Makes the page scrollable */
         }
         .gif-container {
             position: relative;
@@ -84,7 +84,7 @@
                 // Calculate opacity based on scroll position within range
                 const range = endY - startY;
                 const opacity = (scrollY - startY) / range;
-                image.style.opacity = opacity; // Smooth fade
+                image.style.opacity = opacity+0.1; // Smooth fade
             } else {
                 image.style.opacity = 0; // Fully transparent
                 setTimeout(() => {
@@ -112,10 +112,10 @@
             }
 
             // Update visibility for each image with scroll-based fade effect
-            updateImageVisibility(materialImage, scrollY, 310, 860);
-            updateImageVisibility(heightImage, scrollY, 860, 1410);
-            updateImageVisibility(thicknessImage, scrollY, 1410, 1960);
-            updateImageVisibility(diameterImage, scrollY, 1960, 2510);
+            updateImageVisibility(materialImage, scrollY, 310, 960);
+            updateImageVisibility(heightImage, scrollY, 1260, 1910);
+            updateImageVisibility(thicknessImage, scrollY, 2210, 2860);
+            updateImageVisibility(diameterImage, scrollY, 3160, 3810);
         });
     </script>
 </body>
