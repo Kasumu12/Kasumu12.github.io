@@ -46,6 +46,16 @@
             height: auto; /* Maintain aspect ratio */
             display: none; /* Initially hidden */
         }
+
+        .fade-image {
+            position: absolute;
+            left: 75%;
+            width: auto;
+            height: 35%;
+            opacity: 0;
+            transition: opacity 0.5s ease; /* Transition for smooth fade-in and fade-out */
+        }
+    </style>
     </style>
 </head>
 <body>
@@ -61,10 +71,10 @@
             Your browser does not support the video tag.
         </video>
         
-        <img id="material" src="Material.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
-        <img id="height" src="Stud Height.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
-        <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
-        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" style="margin-top: 4%;height:30%;width:auto;"> <!-- Replace with your image source -->
+        <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
+        <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
+        <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
+        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
  
     </div>
 
@@ -74,35 +84,41 @@
         const heightImage = document.getElementById('height');
         const thicknessImage = document.getElementById('thickness');
         const diameterImage = document.getElementById('diameter');
-    
+
         function updateImageVisibility(image, scrollY, topPosition) {
             if (scrollY > 310 && scrollY < 860) {
                 image.style.display = 'inline';
                 image.style.position = 'fixed';
                 image.style.top = topPosition;
-                image.style.left = '75%'; // Adjust to control horizontal position
+                image.style.opacity = 1; // Fade in
             } else {
-                image.style.display = 'none';
-                image.style.position = 'absolute';
+                image.style.opacity = 0; // Fade out
+                // Hide after fade-out completes to prevent it from taking up space
+                setTimeout(() => {
+                    if (image.style.opacity == 0) {
+                        image.style.display = 'none';
+                        image.style.position = 'absolute';
+                    }
+                }, 500); // Match the CSS transition duration
             }
         }
-    
+
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
-    
+
             // Move the video based on scroll
             video.style.transform = `translateY(${scrollY}px)`;
-    
+
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
                 const scrollHeight = document.body.scrollHeight - window.innerHeight;
                 const playbackTime = (((scrollY - 300) / 2) / scrollHeight) * video.duration;
-    
+
                 // Set video currentTime based on scroll position
                 video.currentTime = playbackTime;
             }
-    
-            // Update visibility for each image with doubled range
+
+            // Update visibility for each image with fade effect
             updateImageVisibility(materialImage, scrollY, '20%');
             updateImageVisibility(heightImage, scrollY, '40%');
             updateImageVisibility(thicknessImage, scrollY, '60%');
