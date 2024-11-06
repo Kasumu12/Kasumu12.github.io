@@ -15,7 +15,7 @@
         }
         body {
             background-color: #000000;
-            height: 15280px; /* Makes the page scrollable */
+            height: 16580px; /* Makes the page scrollable */
         }
         .gif-container {
             position: relative;
@@ -104,7 +104,7 @@
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
                 const scrollHeight = document.body.scrollHeight - window.innerHeight;
-                const playbackTime = (((scrollY - 300) / 2) / scrollHeight) * video.duration;
+                const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
 
                 // Set video currentTime based on scroll position
                 video.currentTime = playbackTime;
