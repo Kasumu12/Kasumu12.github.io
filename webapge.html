@@ -31,6 +31,18 @@
             margin-left: 25%;
             height: 200%;
         }
+
+        .content {
+            height: 1500px; /* Just to make sure the page has enough content to scroll */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
         video {
             position: absolute;
             left: 25%;
@@ -52,6 +64,10 @@
 <body>
     <p class="georama-hello" style="font-size:32px;">Truly Brick</p>
     <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
+
+        <div class="content">
+            <img alt="" src="legobg.png"></img>
+        </div>
 
     <div class="gif-container">
         <canvas></canvas>
@@ -99,11 +115,13 @@
             const scrollY = window.scrollY;
 
             // Move the video based on scroll
-            video.style.transform = `translateY(${scrollY}px)`;
+            if (scrollY <= 17920) {
+                video.style.transform = `translateY(${scrollY}px)`;
+            }
 
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
-                const scrollHeight = 17920 - window.innerHeight;
+                const scrollHeight = 17920 + 300 - window.innerHeight;
                 const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
 
                 // Set video currentTime based on scroll position
