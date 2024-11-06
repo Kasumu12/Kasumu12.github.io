@@ -70,34 +70,35 @@
 
     <script>
         const video = document.getElementById('rotating-video');
-        
         const materialImage = document.getElementById('material');
         const heightImage = document.getElementById('height');
         const thicknessImage = document.getElementById('thickness');
         const diameterImage = document.getElementById('diameter');
-
+    
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
-
+    
             // Move the video based on scroll
             video.style.transform = `translateY(${scrollY}px)`;
-            materialImage.style.transform = `translateY(${scrollY}px)`;
-
+    
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
                 const scrollHeight = document.body.scrollHeight - window.innerHeight;
                 const playbackTime = (((scrollY - 300) / 2) / scrollHeight) * video.duration;
-
+    
                 // Set video currentTime based on scroll position
                 video.currentTime = playbackTime;
             }
-
+    
             // Show or hide the image based on scroll position
             if (scrollY > 310 && scrollY < 560) {
-                console.log("Display")
                 materialImage.style.display = 'inline';
+                materialImage.style.position = 'fixed'; // Keep it fixed on the screen
+                materialImage.style.top = '20%'; // Adjust to position it in view
+                materialImage.style.left = '25%'; // Adjust left position if needed
             } else {
                 materialImage.style.display = 'none';
+                materialImage.style.position = 'absolute'; // Reset to default
             }
         });
     </script>
