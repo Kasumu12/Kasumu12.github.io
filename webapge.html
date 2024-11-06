@@ -39,23 +39,15 @@
             transition: transform 0.1s; /* Smooth movement */
             pointer-events: none; /* Prevents video from capturing mouse events */
         }
-        #dynamic-image {
-            position: absolute;
-            left: 75%; /* Adjust position to the right of the video */
-            width: 25%; /* Adjust width as needed */
-            height: auto; /* Maintain aspect ratio */
-            display: none; /* Initially hidden */
-        }
 
         .fade-image {
             position: absolute;
             left: 75%;
             width: auto;
-            height: 35%;
+            height: 40%;
             opacity: 0;
-            transition: opacity 0.5s ease; /* Transition for smooth fade-in and fade-out */
+            transition: opacity 0.1s ease; /* Smooth fade effect */
         }
-    </style>
     </style>
 </head>
 <body>
@@ -63,19 +55,17 @@
     <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
 
     <div class="gif-container">
-        <canvas>
-
-</canvas>
+        <canvas></canvas>
         <video id="rotating-video" muted loop>
-            <source src="R.mp4" type="video/mp4"> <!-- Replace with your video source -->
+            <source src="R.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        
-        <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
-        <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
-        <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
-        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image"> <!-- Replace with your image source -->
- 
+
+        <!-- Images with fade class -->
+        <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image">
+        <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image">
+        <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image">
+        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image">
     </div>
 
     <script>
@@ -85,21 +75,24 @@
         const thicknessImage = document.getElementById('thickness');
         const diameterImage = document.getElementById('diameter');
 
-        function updateImageVisibility(image, scrollY, topPosition) {
-            if (scrollY > 310 && scrollY < 860) {
+        function updateImageVisibility(image, scrollY, startY, endY) {
+            if (scrollY > startY && scrollY < endY) {
                 image.style.display = 'inline';
                 image.style.position = 'fixed';
-                image.style.top = topPosition;
-                image.style.opacity = 1; // Fade in
+                image.style.top = '35%';
+
+                // Calculate opacity based on scroll position within range
+                const range = endY - startY;
+                const opacity = (scrollY - startY) / range;
+                image.style.opacity = opacity; // Smooth fade
             } else {
-                image.style.opacity = 0; // Fade out
-                // Hide after fade-out completes to prevent it from taking up space
+                image.style.opacity = 0; // Fully transparent
                 setTimeout(() => {
                     if (image.style.opacity == 0) {
                         image.style.display = 'none';
                         image.style.position = 'absolute';
                     }
-                }, 500); // Match the CSS transition duration
+                }, 100); // Match the CSS transition duration
             }
         }
 
@@ -118,13 +111,12 @@
                 video.currentTime = playbackTime;
             }
 
-            // Update visibility for each image with fade effect
-            updateImageVisibility(materialImage, scrollY, '20%');
-            updateImageVisibility(heightImage, scrollY, '40%');
-            updateImageVisibility(thicknessImage, scrollY, '60%');
-            updateImageVisibility(diameterImage, scrollY, '80%');
+            // Update visibility for each image with scroll-based fade effect
+            updateImageVisibility(materialImage, scrollY, 310, 860);
+            updateImageVisibility(heightImage, scrollY, 860, 1410);
+            updateImageVisibility(thicknessImage, scrollY, 1410, 1960);
+            updateImageVisibility(diameterImage, scrollY, 1960, 2510);
         });
     </script>
-
 </body>
 </html>
