@@ -28,19 +28,22 @@
             height: auto;
         }
 
-        h1.georama-brinc {
+        h1 {
             font-family: "Georama", sans-serif;
-            font-size: 600%;
+            font-size: 3em;
+            margin: 10px 0;
         }
         
-        
-        h2.georama-brinc {
+        h2 {
             font-family: "Georama", sans-serif;
-            font-size: 400%;
+            font-size: 2.5em;
+            margin: 10px 0;
         }
 
         img {
             display: block;
+            max-width: 100%;
+            height: auto;
             margin: 20px auto;
             border-radius: 20px;
         }
@@ -52,7 +55,10 @@
 
         p1 {
             font-family: "Georama", sans-serif;
-            font-size: 80%;
+            font-size: 1em;
+            line-height: 1.5;
+            display: block;
+            margin: 10px 0;
         }
         
         .mission {
@@ -60,10 +66,20 @@
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 315px;
+            margin-top: 20px;
+            border-radius: 10px;
         }
 
         button {
-            font-size: 150%;
+            font-size: 1.2em;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -77,29 +93,73 @@
         button:hover {
             background-color: #777;
         }
+
+        /* Responsive styles for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            p1 {
+                font-size: 1em;
+            }
+            .mission {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .logo {
+                width: 120px;
+            }
+            p1 {
+                font-size: 0.9em;
+            }
+            .mission {
+                padding: 10px;
+            }
+            button {
+                font-size: 1em;
+                padding: 6px 12px;
+            }
+        }
     </style>
-        
 </head>
+<body>
 
-<h1> About Brick.Co </h1>
-<h2> Founders </h2>
-<p1> Our Founders Migual and Tigger felt like someting was missing in there lives</p1>
-<p1> That when Migual relised what it was, Money</p1>
-<p1>So Migual and Tigger set off to make the best traingl scheme known to man </p1>
+    <img src="logo.png" alt="Logo" class="logo">
 
-<h2> Our Mission </h2>
-<p1 class = "mission">Migual and Tiggers main objective is to make as much money as possible thats why, they have invented a new busines model and traingle scheme for legal reasons we cannot expand on our buissnes modal and please refer to the video below</p1>
+    <h1>About Brick.Co</h1>
+    <h2>Founders</h2>
+    <p1>Our Founders Migual and Tigger felt like something was missing in their lives.</p1>
+    <p1>That's when Migual realized what it was: money.</p1>
+    <p1>So Migual and Tigger set off to make the best triangle scheme known to man.</p1>
 
+    <h2>Our Mission</h2>
+    <p1 class="mission">Migual and Tigger's main objective is to make as much money as possible. They have invented a new business model and triangle scheme. For legal reasons, we cannot expand on our business model; please refer to the video below.</p1>
 
-
-
-<iframe width="420" height="315" 
+    <iframe width="420" height="315" 
         src="https://www.youtube.com/embed/SBGfHk91Vrk" 
         title="YouTube video player" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
-</iframe>
+    </iframe>
 
-<button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='index.html'">Home</button>
 
+</body>
+</html>
