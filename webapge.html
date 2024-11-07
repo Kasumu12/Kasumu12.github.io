@@ -70,7 +70,7 @@
     <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
 
 
-    <div style="height: 17920px; /* Makes the page scrollable */">
+    <div style="height: 1120px; /* Makes the page scrollable */">
     <div class="gif-container">
         <canvas></canvas>
         <video id="rotating-video" muted loop>
@@ -127,13 +127,13 @@
             const scrollY = window.scrollY;
 
             // Move the video based on scroll
-            if (scrollY <= 17920) {
+            if (scrollY <= 11920) {
                 video.style.transform = `translateY(${scrollY}px)`;
             }
 
             if (scrollY >= 300) {
                 // Calculate playback position based on scroll
-                const scrollHeight = 17920 + 300 - window.innerHeight;
+                const scrollHeight = 10520 + 300 - window.innerHeight;
                 const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
 
                 // Set video currentTime based on scroll position
