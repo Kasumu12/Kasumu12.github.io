@@ -102,12 +102,7 @@
                 image.style.opacity = opacity+0.1; // Smooth fade
             } else {
                 image.style.opacity = 0; // Fully transparent
-                setTimeout(() => {
-                    if (image.style.opacity == 0) {
-                        image.style.display = 'none';
-                        image.style.position = 'absolute';
-                    }
-                }, 100); // Match the CSS transition duration
+
             }
         }
 
