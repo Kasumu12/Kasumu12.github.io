@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,17 +24,26 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 150px;
+            width: 100px;
             height: auto;
         }
 
         h1.georama-brinc {
             font-family: "Georama", sans-serif;
-            font-size: 600%;
+            font-size: 3em;
+            margin: 10px 0;
+        }
+
+        h1.subtitle {
+            font-size: 1.5em;
+            margin-top: -10px;
+            color: #bbb;
         }
 
         img {
             display: block;
+            max-width: 100%;
+            height: auto;
             margin: 20px auto;
             border-radius: 20px;
         }
@@ -44,11 +54,12 @@
         }
 
         p {
-            font-size: 200%;
+            font-size: 1.5em;
+            margin: 10px 0;
         }
 
         button {
-            font-size: 150%;
+            font-size: 1.2em;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -62,22 +73,62 @@
         button:hover {
             background-color: #777;
         }
+
+        /* Responsive styles for smaller screens */
+        @media (max-width: 768px) {
+            h1.georama-brinc {
+                font-size: 2.5em;
+            }
+            h1.subtitle {
+                font-size: 1.2em;
+            }
+            img {
+                width: 80%;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 80px;
+            }
+            h1.georama-brinc {
+                font-size: 2em;
+            }
+            h1.subtitle {
+                font-size: 1em;
+            }
+            p {
+                font-size: 1em;
+            }
+            button {
+                font-size: 0.9em;
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <img src="Logo.png" alt="logo Image" class="logo">
-    <h1 class="georama-brinc" style="font-size: 500%;">Brick.CO</h1>
-    <h1 class="georama-brinc" style="font-size: 50%; margin-top:-50px;">Founded by Migual and Tigger</h1>
 
-    <h1 class="georama-brinc" style="font-size: 300%;">Brick Pro</h1>
+    <h1 class="georama-brinc">Brick.CO</h1>
+    <h1 class="subtitle">Founded by Migual and Tigger</h1>
+
+    <h1 class="georama-brinc" style="font-size: 2em;">Brick Pro</h1>
     <a href="webapge.html">
-        <img src="https://www.pngall.com/wp-content/uploads/15/Lego-Brick-PNG-Images.png" alt="Brick Pro Image" style="width: 450px;">
+        <img src="https://www.pngall.com/wp-content/uploads/15/Lego-Brick-PNG-Images.png" alt="Brick Pro Image" style="max-width: 450px;">
     </a>
     <p>A 4 by 2 Masterpiece</p>
 
-    <h1 class="georama-brinc" style="font-size: 300%;">Brick Lite</h1>
+    <h1 class="georama-brinc" style="font-size: 2em;">Brick Lite</h1>
     <a href="Gallery.html">
-        <img src="https://cdn.rebrickable.com/media/parts/ldraw/4/3003.png" alt="Brick Lite Image" style="width: 400px;">
+        <img src="https://cdn.rebrickable.com/media/parts/ldraw/4/3003.png" alt="Brick Lite Image" style="max-width: 400px;">
     </a>
     <p>A 2 by 2 Luxury</p>
     
@@ -86,4 +137,3 @@
     
 </body>
 </html>
-
