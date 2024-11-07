@@ -9,12 +9,12 @@
             font-weight: 800;
             font-style: normal;
             font-variation-settings: "wdth" 100;
-            color: #FFFFFF;
+            color: #CECECE;
             text-align: center;
             font-size: 24px;
         }
         body {
-            background-color: #CECECE;
+            background-color: #000000;
             height: 19220px; /* Makes the page scrollable */
         }
         .gif-container {
@@ -51,6 +51,10 @@
             pointer-events: none; /* Prevents video from capturing mouse events */
         }
 
+        p {
+            font-family: "Georama", sans-serif;
+        }
+
         .fade-image {
             position: absolute;
             left: 75%;
@@ -74,14 +78,19 @@
             Your browser does not support the video tag.
         </video>
 
+        
+        
         <!-- Images with fade class -->
         <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image">
         <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image">
         <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image">
         <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image">
+
+        <p>text</p>
+        
     </div>
 
-    <p>text</p>
+
 
     <script>
         const video = document.getElementById('rotating-video');
