@@ -29,19 +29,19 @@
         }
 
         h1.georama-brinc {
-            font-family: "Georama", sans-serif;
-            font-size: 600%;
+            font-size: 3em;
+            margin-top: 10px;
         }
 
         h2, p {
-            font-size: 50%;
+            font-size: 1em;
             color: white;
             margin-top: 20px;
         }
 
         .container {
             background-color: #333;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             max-width: 500px;
             width: 100%;
@@ -50,7 +50,7 @@
         }
 
         label {
-            font-size: 1.2rem;
+            font-size: 1.1em;
             margin-bottom: 10px;
             display: block;
         }
@@ -66,7 +66,7 @@
         }
 
         input[type=submit] {
-            font-size: 1.2rem;
+            font-size: 1.1em;
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 5px;
@@ -82,7 +82,7 @@
         }
 
         button {
-            font-size: 1.2rem;
+            font-size: 1.1em;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -105,7 +105,35 @@
             font-size: 1rem;
             margin-bottom: 20px;
             text-align: left;
-            max-width: 800px;
+            max-width: 500px;
+        }
+
+        /* Responsive styles for smaller screens */
+        @media (max-width: 768px) {
+            h1.georama-brinc {
+                font-size: 2.5em;
+            }
+            h2, p {
+                font-size: 0.9em;
+            }
+            .container, .terms {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1.georama-brinc {
+                font-size: 2em;
+            }
+            h2, p {
+                font-size: 0.8em;
+            }
+            label, input[type=submit], button {
+                font-size: 1em;
+            }
+            input[type=submit], button {
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -113,7 +141,6 @@
     <h1 class="georama-brinc">Support</h1>
 
     <div class="terms">
-        </h2>
         <p>
             By purchasing this single Brick.CO brick, you acknowledge and agree to our terms in full. All sales are final, and once this brick is yours, it’s yours forever—no returns, no refunds, and no exchanges. You authorize Brick.CO to collect payment in full at checkout, including any additional fees for handling, processing, or other services we may consider necessary.
         </p>
@@ -123,7 +150,6 @@
         <p>
             Your purchase also grants Brick.CO the right to collect and use any data related to this transaction to further improve our brick empire. In short, thank you for your single brick purchase—together, we’re building a future, one unreturnable brick at a time.
         </p>
-        </h2>
     </div>
 
     <p>If you are having problems with your Brick.CO product, please fill out the support form below, and our team will assist you as soon as possible.</p>
