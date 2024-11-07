@@ -1,154 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>hello michael</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Brick Showcase</title>
     <style>
-        .georama-hello {
-            font-family: "Georama", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 800;
-            font-style: normal;
-            font-variation-settings: "wdth" 100;
-            color: #CECECE;
-            text-align: center;
-            font-size: 24px;
-        }
         body {
-            background-color: #000000;
-
-        }
-        .gif-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            margin-left: -10px;
-            margin-bottom: 40%;
-            margin-top: -3%;
-        }
-        canvas {
-            background-color: #CECECE;
-            width: 50%;
-            margin-left: 25%;
-            height: 200%;
-        }
-
-        .content {
-            height: 1500px; /* Just to make sure the page has enough content to scroll */
+            font-family: Arial, sans-serif;
+            margin: 0;
             padding: 20px;
-            color: white;
+            background-color: #000000;
             text-align: center;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
         }
-        
-        video {
-            position: absolute;
-            left: 25%;
-            width: 50%;
-            height: auto;
-            pointer-events: none; /* Prevents video from capturing mouse events */
+        .brick-container {
+            background-color: #5A5A5A;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: auto;
+            max-width: 600px;
         }
-
-        p {
-            font-family: "Georama", sans-serif;
+        .brick-image, .brick-video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
-
-        .fade-image {
-            position: absolute;
-            left: 75%;
-            width: auto;
-            height: 40%;
-            opacity: 0;
-            transition: opacity 0.1s ease; /* Smooth fade effect */
+        .statistics {
+            text-align: left;
+            margin-top: 15px;
+        }
+        .statistics h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        .statistics ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .statistics li {
+            background: #e8e8e8;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <p class="georama-hello" style="font-size:32px;">True Brick</p>
-    <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
-
-
-    <div style="height: 11920px; /* Makes the page scrollable */">
-    <div class="gif-container">
-        <canvas></canvas>
-        <video id="rotating-video" muted loop>
+    <div class="brick-container">
+        <h1 style="color:white;">Lego Brick Showcase</h1>
+        <img src="lego-brick.jpg" alt="Lego Brick Image" class="brick-image">
+        <video controls class="brick-video">
             <source src="R.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
-        
-        
-        <!-- Images with fade class -->
-        <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image">
-        <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image">
-        <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image">
-        <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image">
-
-        
-        
+        <div class="statistics">
+            <h2>Brick Statistics</h2>
+            <ul>
+                <li>Colour: Premium Red</li>
+                <li>Size: 2x4 Studs</li>
+                <li>Material: Aerospace Grade Pro Plastic +</li>
+                <li>Weight: 2.5 grams</li>
+                <li>Compatibility: All Lego Sets</li>
+            </ul>
+        </div>
     </div>
-    </div>
-
-    <p style="margin-left:25%;width:25%;">Introducing the ultimate fusion of minimalism and exclusivity: the Supreme Brick. This is not just a toy—it's a statement. Featuring the iconic Supreme logo boldly imprinted on an authentic LEGO brick, this collector’s item redefines luxury in simplicity. Whether you're an aficionado of rare memorabilia or someone who appreciates the unique blend of pop culture and streetwear, the Supreme Brick commands attention and sparks conversation. Priced to reflect its status, this piece isn't just about building structures; it's about building a legacy. Secure yours now and own a symbol of style that transforms the ordinary into the extraordinary.</p>
-
-
-
-    <script>
-        const video = document.getElementById('rotating-video');
-        const materialImage = document.getElementById('material');
-        const heightImage = document.getElementById('height');
-        const thicknessImage = document.getElementById('thickness');
-        const diameterImage = document.getElementById('diameter');
-
-        function updateImageVisibility(image, scrollY, startY, endY) {
-            if (scrollY > startY && scrollY < endY) {
-                image.style.display = 'inline';
-                image.style.position = 'fixed';
-                image.style.top = '35%';
-
-                // Calculate opacity based on scroll position within range
-                const range = endY - startY;
-                const opacity = (scrollY - startY) / range;
-                image.style.opacity = opacity+0.1; // Smooth fade
-            } else {
-                image.style.opacity = 0; // Fully transparent
-                setTimeout(() => {
-                    if (image.style.opacity == 0) {
-                        image.style.display = 'none';
-                        image.style.position = 'absolute';
-                    }
-                }, 100); // Match the CSS transition duration
-            }
-        }
-
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-
-            // Move the video based on scroll
-            if (scrollY <= 11920) {
-                video.style.transform = `translateY(${scrollY}px)`;
-            }
-
-            if (scrollY >= 300) {
-                // Calculate playback position based on scroll
-                const scrollHeight = 10520 + 300 - window.innerHeight;
-                const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
-
-                // Set video currentTime based on scroll position
-                video.currentTime = playbackTime;
-            }
-
-            // Update visibility for each image with scroll-based fade effect
-            updateImageVisibility(materialImage, scrollY, 1240, 1840);
-            updateImageVisibility(heightImage, scrollY, 5000, 6600);
-            updateImageVisibility(thicknessImage, scrollY, 7760, 8360);
-            updateImageVisibility(diameterImage, scrollY, 9320, 9920);
-
-
-
-        });
-    </script>
 </body>
 </html>
