@@ -11,31 +11,29 @@
             font-variation-settings: "wdth" 100;
             color: #CECECE;
             text-align: center;
+            font-size: 24px;
         }
-
         body {
             background-color: #000000;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
 
+        }
         .gif-container {
             position: relative;
             width: 100%;
             height: 100%;
-            margin: 0;
-            padding: 0;
+            margin-left: -10px;
+            margin-bottom: 40%;
+            margin-top: -3%;
         }
-
         canvas {
             background-color: #CECECE;
-            width: 100%;
-            height: auto;
-            margin: 0 auto;
+            width: 50%;
+            margin-left: 25%;
+            height: 200%;
         }
 
         .content {
+            height: 1500px; /* Just to make sure the page has enough content to scroll */
             padding: 20px;
             color: white;
             text-align: center;
@@ -44,77 +42,35 @@
             background-attachment: fixed;
             background-size: cover;
         }
-
+        
         video {
             position: absolute;
-            left: 0;
-            width: 100%;
+            left: 25%;
+            width: 50%;
             height: auto;
-            pointer-events: none;
+            pointer-events: none; /* Prevents video from capturing mouse events */
         }
 
         p {
             font-family: "Georama", sans-serif;
-            font-size: 18px;
-            line-height: 1.6;
-            width: 90%;
-            margin: 20px auto;
-            color: #CECECE;
         }
 
         .fade-image {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: auto;
+            left: 75%;
+            width: auto;
+            height: 40%;
             opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Responsive Styling */
-        @media (min-width: 768px) {
-            .georama-hello {
-                font-size: 32px;
-            }
-            .gif-container canvas {
-                width: 50%;
-                height: 200%;
-                margin-left: 25%;
-            }
-            .fade-image {
-                width: auto;
-                height: 40%;
-            }
-            p {
-                width: 50%;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .georama-hello {
-                font-size: 24px;
-            }
-            .georama-hello:first-of-type {
-                font-size: 28px;
-                margin-top: 10px;
-            }
-            .georama-hello:last-of-type {
-                font-size: 48px;
-                margin-top: -2%;
-            }
-
-            .fade-image {
-                width: 60%;
-            }
+            transition: opacity 0.1s ease; /* Smooth fade effect */
         }
     </style>
 </head>
 <body>
-    <p class="georama-hello">True Brick</p>
-    <h1 class="georama-hello">Truly Bricked</h1>
+    <p class="georama-hello" style="font-size:32px;">True Brick</p>
+    <h1 class="georama-hello" style="font-size:132px; margin-top:-2%;">Truly Bricked</h1>
 
+
+    <div style="height: 17920px; /* Makes the page scrollable */">
     <div class="gif-container">
         <canvas></canvas>
         <video id="rotating-video" muted loop>
@@ -122,14 +78,22 @@
             Your browser does not support the video tag.
         </video>
 
+        
+        
         <!-- Images with fade class -->
         <img id="material" src="Material.png" alt="Dynamic Image" class="fade-image">
         <img id="height" src="Stud Height.png" alt="Dynamic Image" class="fade-image">
         <img id="thickness" src="Wall thickness.png" alt="Dynamic Image" class="fade-image">
         <img id="diameter" src="Stud diameter.png" alt="Dynamic Image" class="fade-image">
+
+        
+        
+    </div>
     </div>
 
-    <p>Introducing the ultimate fusion of minimalism and exclusivity: the Supreme Brick. This is not just a toy—it's a statement. Featuring the iconic Supreme logo boldly imprinted on an authentic LEGO brick, this collector’s item redefines luxury in simplicity. Whether you're an aficionado of rare memorabilia or someone who appreciates the unique blend of pop culture and streetwear, the Supreme Brick commands attention and sparks conversation. Priced to reflect its status, this piece isn't just about building structures; it's about building a legacy. Secure yours now and own a symbol of style that transforms the ordinary into the extraordinary.</p>
+    <p style="margin-left:25%;width:25%;">Introducing the ultimate fusion of minimalism and exclusivity: the Supreme Brick. This is not just a toy—it's a statement. Featuring the iconic Supreme logo boldly imprinted on an authentic LEGO brick, this collector’s item redefines luxury in simplicity. Whether you're an aficionado of rare memorabilia or someone who appreciates the unique blend of pop culture and streetwear, the Supreme Brick commands attention and sparks conversation. Priced to reflect its status, this piece isn't just about building structures; it's about building a legacy. Secure yours now and own a symbol of style that transforms the ordinary into the extraordinary.</p>
+
+
 
     <script>
         const video = document.getElementById('rotating-video');
@@ -144,37 +108,46 @@
                 image.style.position = 'fixed';
                 image.style.top = '35%';
 
+                // Calculate opacity based on scroll position within range
                 const range = endY - startY;
                 const opacity = (scrollY - startY) / range;
-                image.style.opacity = opacity + 0.1;
+                image.style.opacity = opacity+0.1; // Smooth fade
             } else {
-                image.style.opacity = 0;
+                image.style.opacity = 0; // Fully transparent
                 setTimeout(() => {
                     if (image.style.opacity == 0) {
                         image.style.display = 'none';
                         image.style.position = 'absolute';
                     }
-                }, 100);
+                }, 100); // Match the CSS transition duration
             }
         }
 
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
 
+            // Move the video based on scroll
             if (scrollY <= 17920) {
                 video.style.transform = `translateY(${scrollY}px)`;
             }
 
             if (scrollY >= 300) {
+                // Calculate playback position based on scroll
                 const scrollHeight = 17920 + 300 - window.innerHeight;
                 const playbackTime = ((scrollY - 300) / scrollHeight) * video.duration;
+
+                // Set video currentTime based on scroll position
                 video.currentTime = playbackTime;
             }
 
+            // Update visibility for each image with scroll-based fade effect
             updateImageVisibility(materialImage, scrollY, 1240, 3840);
             updateImageVisibility(heightImage, scrollY, 6000, 8600);
             updateImageVisibility(thicknessImage, scrollY, 10760, 13360);
             updateImageVisibility(diameterImage, scrollY, 15320, 17920);
+
+
+
         });
     </script>
 </body>
